@@ -32,7 +32,7 @@ test('can order a pizza', async ({ supawright, page }) => {
   const { data: order, error: orderFetchError } = await supawright
     .supabase()
     .from('order')
-    .select('*, pizza_size (*), order_topping (*)')
+    .select('*, pizza_size (*), order_topping (*), order_history (*)')
     .eq('user_id', user.id)
     .single()
   if (orderFetchError) {
@@ -41,4 +41,6 @@ test('can order a pizza', async ({ supawright, page }) => {
 
   expect(order.order_topping.length).toBe(3)
   expect(order.pizza_size!.size).toBe('Medium')
+  expect(order.order_history.length).toBe(1)
+  expect(order.order_history[0].order_status_id).toBe(1)
 })

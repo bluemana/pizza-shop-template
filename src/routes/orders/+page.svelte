@@ -63,10 +63,22 @@
             {/if}
           </div>
 
-          <div class="flex flex-col gap-2">
+          <div class="flex flex-col">
             <h2 class="text-xl font-bold">Total</h2>
             <p class="text-2xl font-bold">
               £{price.toFixed(2)}
+            </p>
+          </div>
+          <div class="flex flex-col gap-2">
+            <h2 class="text-xl font-bold">Status</h2>
+            <p class="text-sm">
+              {order.status.name}
+            </p>
+          </div>
+          <div class="flex flex-col gap-2">
+            <h2 class="text-xl font-bold">Last update</h2>
+            <p class="text-sm">
+              {new Date(order.status.created_at).toLocaleTimeString()}
             </p>
           </div>
         </div>

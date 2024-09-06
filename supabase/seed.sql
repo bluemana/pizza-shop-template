@@ -16,3 +16,11 @@ values
   ('Ham'),
   ('Chicken'),
   ('Bacon');
+
+insert into order_status (id, name)
+values
+  (1, 'Order Received'),
+  (2, 'Making Pizza'),
+  (3, 'Out for Delivery'),
+  (4, 'Delivered'),
+  (5, 'Cancelled');

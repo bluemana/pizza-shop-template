@@ -63,6 +63,21 @@ export const actions: Actions = {
       return setError(form, orderToppingsCreateError.message)
     }
 
+    const { error: orderHistoryCreateError } = await supabase
+      .from('order_history')
+      .insert(
+        {
+          order_id: order.id,
+          order_status_id: 1
+        },
+      )
+
+    if (orderHistoryCreateError) {
+      console.error('Error creating order history', orderHistoryCreateError)
+      await supabaseAdmin.from('order').delete().eq('id', order.id)
+      return setError(form, orderHistoryCreateError.message)
+    }
+
     redirect(303, `/orders?thanks=1`)
   },
 }

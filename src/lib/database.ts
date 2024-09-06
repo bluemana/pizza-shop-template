@@ -151,6 +151,22 @@ export type Database = {
         }
         Relationships: []
       }
+      order_history: {
+        Row: {
+          id: string
+          order_id: string
+          order_status_id: number
+          created_at: string
+          notes?: string | null
+        }
+        Insert: {
+          id?: string
+          order_id: string
+          order_status_id: number
+          created_at?: string
+          notes?: string | null
+        }
+      }
     }
     Views: {
       [_ in never]: never
